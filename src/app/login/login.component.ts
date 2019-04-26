@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl,Validators } from '@angular/forms';
-import * as jwt_decode from "jwt-decode";
+import { ApiAuthService } from '../api-auth.service';
+import * as jwt_decode from 'jwt-decode';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,10 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm:FormGroup;
+  loginForm: FormGroup;
   message = '';
 
-  constructor(private apiService : ApiService,private router: Router) {
+  constructor(private apiService: ApiAuthService, private router: Router) {
 
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
@@ -22,18 +26,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  loginBtn(){
+  loginBtn() {
     this.message = ''
-    if(this.loginForm.valid){
-      this.apiService.login(this.loginForm.value).subscribe((res:any) =>{
+    if (this.loginForm.valid) {
+      this.apiService.login(this.loginForm.value).subscribe((res: any) => {
         console.log(res);
-        if(res.message === 'ok'){
+        if (res.message === 'ok') {
           // redirection
-         // console.log( jwt_decode(res.token))
+          // console.log( jwt_decode(res.token))
           localStorage.setItem('token', res.token);
           this.router.navigate(['/to-do-list']);
 
-        } else{
+        } else {
           this.message = res.message;
         }
       })

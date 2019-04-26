@@ -101,14 +101,14 @@
                   <input formControlName="password" class="form-control" placeholder="Password" type="password">
                 </div>
               </div>
-              <div class="custom-control custom-control-alternative custom-checkbox">
-                <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                <label class="custom-control-label" for=" customCheckLogin"></label>
-              </div>
+
               <div class="text-center">
                 <button type="button" class="btn btn-primary my-4" (click)="loginBtn()">Sign in</button>
               </div>
             </form>
+            <div class="alert alert-primary text-center" role="alert" *ngIf="message">
+              {{message}}
+            </div>
           </div>
         </div>
        </div>
