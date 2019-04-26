@@ -12,7 +12,7 @@ export class ApiAuthService {
   constructor(private http: HttpClient) {}
 
   login(form){
-    return this.http.post('http://localhost:3000/login',form);
+    return this.http.post('http://localhost:3000/auth/login',form);
   }
 
   decodeToken() {
@@ -23,7 +23,7 @@ export class ApiAuthService {
   }
 
   register(form){
-    return this.http.post('http://localhost:3000/register',form);
+    return this.http.post('http://localhost:3000/auth/register',form);
   }
 
 }
