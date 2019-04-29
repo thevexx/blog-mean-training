@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiAuthService } from '../api-auth.service';
+import { ApiAuthService } from '../shared/api-auth.service';
 import * as jwt_decode from 'jwt-decode';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
