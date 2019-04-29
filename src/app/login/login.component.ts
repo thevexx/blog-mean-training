@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           // redirection
           // console.log( jwt_decode(res.token))
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/to-do-list']);
+          this.router.navigate(['/home']);
 
         } else {
           this.message = res.message;
