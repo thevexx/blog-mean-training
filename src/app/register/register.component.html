@@ -93,7 +93,15 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Name" type="text">
+                  <input class="form-control" placeholder="Name" type="text" formControlName="name">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Last name" type="text" formControlName="lastname">
                 </div>
               </div>
               <div class="form-group">
@@ -101,35 +109,31 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Email" type="email">
+                  <input class="form-control" placeholder="Email" type="email" formControlName="email">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Password" type="password" formControlName="password"
+                    #password (keyup)="validatePassword(password.value)">
                 </div>
               </div>
               <div class="form-group">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                  </div>
-                  <input class="form-control" placeholder="Password" type="password">
+                <div class="input-group input-group-alternative mb-3">
+                  <select formControlName="role" class="form-control">
+                    <option class="custom-control-label" value="author">Author</option>
+                    <option class="custom-control-label" value="reader">Reader</option>
+                  </select>
                 </div>
               </div>
-              <div class="text-muted font-italic"><small>password strength: <span
-                    class="text-success font-weight-700">strong</span></small></div>
-              <div class="row my-4">
-                <div class="col-12">
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                    <label class="custom-control-label" for="customCheckRegister">
-                      Author
-                    </label><br>
-                    <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                    <label class="custom-control-label" for="customCheckRegister">
-                      Reader
-                    </label>
-                  </div>
-                </div>
-              </div>
+              <div class="text-muted font-italic" id="pwdVisibility"><small>password strength:<span
+                    class="text-success font-weight-700" id="strength">{{ strength }}</span></small></div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary mt-4">Create account</button>
+                <button type="button" class="btn btn-primary mt-4" (click)="registerBtn()">Create account</button>
               </div>
             </form>
           </div>
@@ -138,5 +142,3 @@
     </div>
   </div>
 </div>
-
-
