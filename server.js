@@ -15,6 +15,9 @@ app.use(function(req, res, next) {
 const auth = require('./server/routes/auth')
 app.use('/auth', auth);
 
+const article = require('./server/routes/article')
+app.use('/article', article);
+
 
 app.listen(3000, ()=>{
   console.log('port:3000')
