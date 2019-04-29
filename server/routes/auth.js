@@ -16,4 +16,5 @@ router.post('/register', async (req, res) => {
     const userResult = await user.create(req.body).catch(err => err);
     res.send({ message: 'ok', data: userResult });
 })
-  module.exports = router;
+
+module.exports = router;
