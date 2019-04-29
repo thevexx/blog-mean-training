@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiAuthService } from '../api-auth.service';
+import { ApiAuthService } from '../shared/api-auth.service';
 import * as jwt_decode from 'jwt-decode';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           // redirection
           // console.log( jwt_decode(res.token))
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/to-do-list']);
+          this.router.navigate(['/home']);
 
         } else {
           this.message = res.message;
