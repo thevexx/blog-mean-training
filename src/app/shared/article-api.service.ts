@@ -11,4 +11,9 @@ export class ArticleApiService {
   updateArticle(ArticleId, article) {
     return this.http.post('http://localhost:3000/article/articleUpdate/' + ArticleId + '/', article);
   }
+
+  // getArticle(userId){
+  //   return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
+
+  // }
 }
