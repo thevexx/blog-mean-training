@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ArticleComponent } from './article/article.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ArticleComponent } from './article/article.component';
     LoginComponent,
     RegisterComponent,
     ArticleComponent,
-    HomeComponent
+    HomeComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,6 @@ import { ArticleComponent } from './article/article.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [RegisterComponent, ArticleComponent]
+  exports: [RegisterComponent, ArticleComponent, AccountComponent]
 })
 export class AppModule { }
