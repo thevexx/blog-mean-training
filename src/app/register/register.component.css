@@ -12,5 +12,9 @@ h1::first-letter{
 }
 
 #strength{
-  margin-left: 2%;
+  margin-left: 10px;
+}
+
+.pass-high{
+  color: green;
 }
