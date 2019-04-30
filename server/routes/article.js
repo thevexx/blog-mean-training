@@ -3,9 +3,8 @@ const article = require('../models/article');
 const author = require('../models/author');
 const comment = require('../models/comment');
 
-router.post('/articleUpdate/:id/:index', async (req, res) => {
-  var i = req.params.index
-  const articleResult = await article.update({ "_id": req.params.id }, { $set: { [`articles.${i}`]: req.body } }).exec();
+router.post('/articleUpdate/:idArticle/', async (req, res) => {
+  const articleResult = await article.update({ "_id": req.params.id }, { $set: { articles: req.body } }).exec();
   res.send({ data: articleResult })
 })
 
@@ -15,16 +14,18 @@ router.get('/byAuthor/:id', async (req, res) => {
 })
 
 router.post('/addArticle/:idAuthor', async (req, res) => {
+  req.body.author = req.params.idAuthor;
   const articleResult = await article.create(req.body).catch(err => err);
-  const authorResult = await author.update({ "_id": req.params.idAuthor }, { $push: { articles: articleResult._id } }).exec();
-  res.send({ data: articleResult })
+  const authorResult = await author.updateOne({ "_id": req.params.idAuthor }, { $push: { articles: articleResult._id } }).exec();
+  res.send({ data: authorResult })
 })
 
 router.post('/addComment/:idArticle', async (req, res) => {
-  const articleResult = await comment.create(req.body).catch(err => err);
-  const articleResult = await article.update({ "_id": req.params.idArticle }, { $push: { comments: articleResult._id } }).exec();
-  res.send({ data: articleResult })
+  const commentResult = await comment.create(req.body).catch(err => err);
+  const articleResult2 = await article.updateOne({ "_id": req.params.idArticle }, { $push: { comments: commentResult._id } }).exec();
+  res.send({ data: articleResult2 })
 })
+
 
 
 module.exports = router;
