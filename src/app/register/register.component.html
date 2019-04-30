@@ -87,7 +87,7 @@
             <div class="text-center text-muted mb-4">
               <small>Sign up with credentials</small>
             </div>
-            <form role="form">
+            <form [formGroup]="registerForm">
               <div class="form-group">
                 <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
@@ -125,13 +125,15 @@
               <div class="form-group">
                 <div class="input-group input-group-alternative mb-3">
                   <select formControlName="role" class="form-control">
+                    <option class="custom-control-label" value="reader" selected>Reader</option>
                     <option class="custom-control-label" value="author">Author</option>
-                    <option class="custom-control-label" value="reader">Reader</option>
                   </select>
                 </div>
               </div>
               <div class="text-muted font-italic" id="pwdVisibility"><small>password strength:<span
-                    class="text-success font-weight-700" id="strength">{{ strength }}</span></small></div>
+                    class="font-weight-700 pass-high"
+                    [ngClass]="{'text-success': strength === 'strong', 'text-warning': strength === 'medium', 'text-info': strength === 'weak','text-danger': strength === 'invalid password'}"
+                    id="strength">{{ strength }}</span></small></div>
               <div class="text-center">
                 <button type="button" class="btn btn-primary mt-4" (click)="registerBtn()">Create account</button>
               </div>
