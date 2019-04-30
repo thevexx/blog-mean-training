@@ -6,7 +6,7 @@ const article = new mongoose.Schema({
   topic: String,
   content: String,
   date: { type: String, default: Date.now() },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'author' }]
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comment' }]
 
 })
 
