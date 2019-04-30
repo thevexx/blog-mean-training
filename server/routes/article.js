@@ -2,10 +2,9 @@ const router = require('express').Router();
 const article = require('../models/article');
 const author = require('../models/author');
 
-router.post('/articleUpdate/:id/:index', async (req, res) => {
-  var i = req.params.index
-  const articleResult = await article.update({ "_id": ObjectId(req.params.id) }, { $set: { [`articles.${i}`]: req.body } }).exec();
-  res.send({ data: articleResult })
+
+router.post('/articleUpdate/:idArticle/', async (req, res) => {
+  const articleResult = await article.update({ "_id": req.params.id }, { $set: { articles: req.body } }).exec();
 })
 
 router.get('/byAuthor/:id', async (req, res) => {
