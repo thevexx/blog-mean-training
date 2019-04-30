@@ -22,13 +22,13 @@ export class ArticleComponent implements OnInit {
   }
 
   updateArt(titl, topi, conten){
-    const i=0;
+    //const i=0;
     const article = {
       title : titl,
       topic : topi,
       content : conten
     }
-    this.apiService.updateArticle(this.apiService.userId,i, article).subscribe((res: any) => {
+    this.apiService.updateArticle(this.apiService.ArticleId,article).subscribe((res: any) => {
       console.log(res);
       this.ngOnInit();
     })
