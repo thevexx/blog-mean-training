@@ -5,23 +5,27 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ArticleApiService {
-  ArticleId;
+  articleId;
   userId;
 
-   constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) { }
 
-  updateArticle(ArticleId, article) {
-    return this.http.post('http://localhost:3000/article/articleUpdate/' + ArticleId + '/', article);
+  updateArticle(articleId, article) {
+    return this.http.post('http://localhost:3000/article/articleUpdate/' + articleId + '/', article);
   }
 
   getArticle(userId, articleId) {
     return this.http.get('http://localhost:3000/id/' + userId + '/' + articleId);
   }
 
-  addArticle(userId, article){
-
+  addArticle(userId, article) {
     return this.http.post('http://localhost:3000/addArticle/' + userId, article);
   }
+
+  addComment(userId, articleId, article) {
+    return this.http.post('http://localhost:3000/addComment/' + userId + '/' + articleId, article);
+  }
+
 
 
 }

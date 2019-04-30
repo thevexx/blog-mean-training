@@ -17,8 +17,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(private apiService: ApiAuthService, private router: Router) {
     this.registerForm = new FormGroup({
+      name: new FormControl('', []),
+      lastname: new FormControl('', []),
       email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(5)])
+      password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      role: new FormControl('reader', [])
     })
   }
 
@@ -27,6 +30,7 @@ export class RegisterComponent implements OnInit {
 
   registerBtn() {
     this.message = ""
+    console.log(this.registerForm.value)
     if (this.registerForm.valid) {
       this.apiService.register(this.registerForm.value).subscribe((res: any) => {
         console.log(res);
@@ -62,7 +66,7 @@ export class RegisterComponent implements OnInit {
       }
     }
     if (score === 0) {
-      this.strength = 'invalid';
+      this.strength = 'invalid password';
     } else if (score === 1) {
       this.strength = 'weak';
     } else if (score === 2) {
