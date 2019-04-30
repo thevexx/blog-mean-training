@@ -6,8 +6,8 @@ const article = new mongoose.Schema({
   topic: String,
   content: String,
   date: { type: String, default: Date.now() },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comment' }]
-
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comment' }],
+  image: '',
 })
 
 module.exports = mongoose.model('article', article);
