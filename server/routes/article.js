@@ -19,5 +19,11 @@ router.post('/addArticle/:idAuthor', async (req, res) => {
   res.send({ data: articleResult })
 })
 
+router.post('/addComment/:idArticle', async (req, res) => {
+  const articleResult = await article.update({ "_id": ObjectId(req.params.idArticle) }, { $push: { comments: articleResult._id } }).exec();
+  res.send({ data: articleResult })
+})
+
+
 
 module.exports = router;
