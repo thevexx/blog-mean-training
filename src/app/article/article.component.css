@@ -12,3 +12,10 @@ input{
   border-radius: 5px;
   padding: 10px;
 }
+
+textarea{
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border-color: #b8b2b2;
+}
