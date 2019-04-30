@@ -6,14 +6,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticleApiService {
   ArticleId;
-  constructor(private http: HttpClient) { }
+  userId;
+
+   constructor(private http: HttpClient){}
 
   updateArticle(ArticleId, article) {
     return this.http.post('http://localhost:3000/article/articleUpdate/' + ArticleId + '/', article);
   }
 
-  // getArticle(userId){
-  //   return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
+  getArticle(userId, articleId) {
+    return this.http.get('http://localhost:4200/id/' + userId + '/' + articleId);
+  }
 
-  // }
+  addArticle(userId, article){
+
+    return this.http.post('http://localhost:3000/addArticle/' + userId, article);
+  }
+
+
 }
