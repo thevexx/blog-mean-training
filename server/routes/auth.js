@@ -12,9 +12,9 @@ router.post('/login', async (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-  req.body.password = bcrypt.hashSync(req.body.password, 10);
-  const userResult = await user.create(req.body).catch(err => err);
-  res.send({ message: 'ok', data: userResult })
+    req.body.password = bcrypt.hashSync(req.body.password, 10);
+    const userResult = await user.create(req.body).catch(err => err);
+    res.send({ message: 'ok', data: userResult });
 })
 
 

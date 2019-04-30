@@ -2,6 +2,15 @@ h1
 {
   color:white;
 }
+
 h1::first-letter{
   font-size:50px;
+}
+
+#pwdVisibility{
+  visibility: hidden;
+}
+
+#strength{
+  margin-left: 2%;
 }
