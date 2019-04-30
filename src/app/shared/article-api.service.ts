@@ -15,7 +15,7 @@ export class ArticleApiService {
   }
 
   getArticle(userId, articleId) {
-    return this.http.get('http://localhost:4200/id/' + userId + '/' + articleId);
+    return this.http.get('http://localhost:3000/id/' + userId + '/' + articleId);
   }
 
   addArticle(userId, article){
