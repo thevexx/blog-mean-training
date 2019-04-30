@@ -5,10 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ArticleApiService {
-  userId;
-   constructor(private http: HttpClient){}
+  ArticleId;
+  constructor(private http: HttpClient) { }
 
-   updateArticle(userId,i,article){
-    return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
+  updateArticle(ArticleId, article) {
+    return this.http.post('http://localhost:3000/article/articleUpdate/' + ArticleId + '/', article);
   }
 }
