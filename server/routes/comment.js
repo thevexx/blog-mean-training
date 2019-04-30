@@ -1,14 +1,25 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-const article= require('../models/comment');
+const comment = require('../models/comment');
+const author = require('../models/author');
 
-router.post('/deleteComment', async (req, res) => {
-  const result = await comment.update({ "_id": ObjectId(req.params.id) }, { $pull: { comments : req.body } });
-  res.send({ message: 'ok', data: result })
+
+router.get('/allComments', async (req, res) => {
+  const delResult = await author.find().forEach(function (x) {
+    x.articles.forEach(function (y) {
+      y.comments.forEach(function (z) {
+       return z.comment;
+      })
+    })
+  })
+  res.send({result: delResult});
 })
 
-router.get('/comments', async (req, res) => {
-  //gets all comments from all articles
+router.post('/deleteComment/:index', async (req, res) => {
+  const i = req.params.index;
+  const delResult = await comments.update({ "_id": ObjectId(req.params.id) }, { $set: { [`articles.${i}`]: req.body } }).exec();
+  res.send({ data: delResult })
 })
+
 
 module.exports = router;

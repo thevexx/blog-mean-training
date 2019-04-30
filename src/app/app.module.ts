@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { ArticleComponent } from './article/article.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ArticleComponent
+    ArticleComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { ArticleComponent } from './article/article.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [RegisterComponent, ArticleComponent]
+  exports: [RegisterComponent, ArticleComponent, AccountComponent]
 })
 export class AppModule { }
