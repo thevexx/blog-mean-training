@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiLoginService } from '../shared/api-auth.service';
+import { ApiAuthService } from '../shared/api-auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import * as jwt_decode from "jwt-decode";
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   message = '';
   strength = '';
 
-  constructor(private apiService: ApiLoginService, private router: Router) {
+  constructor(private apiService: ApiAuthService, private router: Router) {
     this.registerForm = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(5)])

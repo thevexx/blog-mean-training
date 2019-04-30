@@ -9,6 +9,11 @@ export class ArticleApiService {
    constructor(private http: HttpClient){}
 
    updateArticle(userId,i,article){
-    return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
+   return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
   }
+
+  // getArticle(userId){
+  //   return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
+
+  // }
 }
