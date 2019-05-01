@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -7,24 +8,34 @@ import { HttpClient } from '@angular/common/http';
 export class ArticleApiService {
 
   userId;
-  aticleId;
+  authorId;
 
    constructor(private http: HttpClient){}
 
-   updateArticle(userId,i,article){
-   return this.http.post('http://localhost:3000/article/articleUpdate/'+userId+'/'+i,article);
+   decodeToken() {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      console.log(jwt_decode(token))
+      this.userId = jwt_decode(token).data._id;
+      this.authorId = jwt_decode(token).data.author;
+      // this.articleId = jwt_decode(token).data.articles._id;
+    }
   }
 
-  getArticle(userId, articleId) {
-    return this.http.get('http://localhost:3000/id/' + userId + '/' + articleId);
+   updateArticle(articleId,article){
+   return this.http.post('http://localhost:3000/article/updateArticle/'+articleId, article);
+  }
+
+  getArticle(articleId) {
+    return this.http.get('http://localhost:3000/article/byId/' + articleId);
   }
 
   addArticle(userId, article){
-    return this.http.post('http://localhost:3000/addArticle/' + userId, article);
+    return this.http.post('http://localhost:3000/article/addArticle/' + userId, article);
   }
 
-  addComment(userId, articleId, article){
-    return this.http.post('http://localhost:3000/addComment/' + userId + '/' + articleId , article);
+  addComment( articleId, comment){
+    return this.http.post('http://localhost:3000/article/addComment/' + articleId + '/' + this.userId , comment);
   }
 
 

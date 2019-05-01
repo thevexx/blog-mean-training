@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleApiService } from '../shared/article-api.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-article',
@@ -8,29 +10,63 @@ import { ArticleApiService } from '../shared/article-api.service';
 })
 export class ArticleComponent implements OnInit {
   imgUrl = '';
-
-  constructor(private apiService: ArticleApiService) { }
-
-  ngOnInit() {
-    // this.apiService.decodeToken();
-    // console.log(this.apiService.userId);
-
-    // this.apiService.getArticle(this.apiService.userId).subscribe((res: any) => {
-    //   console.log(res);
-    //   this.article = res.data.toDoList;
-    // })
+  data;
+  comments;
+  id;
+  constructor(private apiService: ArticleApiService, private activatedRoute: ActivatedRoute) {
   }
 
-  updateArt(titl, topi, conten){
-    const i=0;
+  ngOnInit() {
+    this.apiService.decodeToken();
+
+    const id = this.activatedRoute.snapshot.paramMap.get('id')
+    console.log(id)
+
+    this.apiService.getArticle(id).subscribe((res: any) => {
+      console.log(res.data);
+      this.data = res.data;
+      this.comments = res.data.comments;
+    })
+  }
+
+  updateArt(titl, topi, conten) {
     const article = {
-      title : titl,
-      topic : topi,
-      content : conten
+      title: titl,
+      topic: topi,
+      content: conten
     }
-    this.apiService.updateArticle(this.apiService.userId,i, article).subscribe((res: any) => {
+
+    this.id = this.activatedRoute.snapshot.paramMap.get('id')
+
+    this.apiService.updateArticle(id, article).subscribe((res: any) => {
       console.log(res);
       this.ngOnInit();
     })
+  }
+
+  addComment(commentVal) {
+    const com = { comment: commentVal };
+
+    const id = this.activatedRoute.snapshot.paramMap.get('id')
+
+    this.apiService.addComment(id, com).subscribe((res: any) => {
+      this.ngOnInit();
+    })
+  }
+
+  likeBtn() {
+    const isLiked = this.data.liked.filter(elem => elem === this.apiService.userId).length === 1;
+    if (isLiked) {
+      this.data.liked = this.data.liked.filter(elem => elem !== this.apiService.userId);
+    } else {
+      this.data.liked.push(this.apiService.userId)
+    }
+    this.apiService.updateArticle(this.id, this.data).subscribe((res: any) => {
+      this.ngOnInit();
+    })
+  }
+
+  isLikedArticle() {
+    return this.data.liked.filter(elem => elem === this.apiService.userId).length === 1;
   }
 }
