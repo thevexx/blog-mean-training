@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiAuthService } from '../shared/api-auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import * as jwt_decode from "jwt-decode";
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-register',
