@@ -3,13 +3,8 @@ const article = require('../models/article');
 const author = require('../models/author');
 const comment = require('../models/comment');
 
-<<<<<<< HEAD
 router.post('/updateArticle/:idArticle', async (req, res) => {
   const articleResult = await article.update({ "_id": req.params.idArticle }, { $set: req.body }).exec();
-=======
-router.post('/articleUpdate/:idArticle/', async (req, res) => {
-  const articleResult = await article.update({ "_id": req.params.idArticle }, { $set: { articles: req.body } }).exec();
->>>>>>> 2be02e136c6bb42e86e23f7520fe922861262d0e
   res.send({ data: articleResult })
 })
 
@@ -42,8 +37,6 @@ router.post('/addComment/:idArticle/:userId', async (req, res) => {
   res.send({ data: articleResult2 })
 })
 
-<<<<<<< HEAD
-=======
 router.post('/commentUpdate/:idComment/', async (req, res) => {
   const articleResult = await comment.updateOne({ "_id": req.params.idComment }, { $set:  req.body  }).exec();
   res.send({ data: articleResult })
@@ -55,5 +48,4 @@ router.post('/deleteComment/:idComment/', async (req, res) => {
 })
 
 
->>>>>>> 2be02e136c6bb42e86e23f7520fe922861262d0e
 module.exports = router;
