@@ -12,16 +12,10 @@ router.post('/login', async (req, res) => {
   res.send({ message: 'ok', token: jwt.sign({ data: userResult }, ' secret_pass ') })
 })
 
-
 router.post('/register', async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 10);
   const userResult = await user.create(req.body).catch(err => err);
-  res.send({ message: 'ok', data: userResult })
-})
-
-router.post('/register', async (req, res) => {
-  req.body.password = bcrypt.hashSync(req.body.password, 10);
-  const userResult = await user.create(req.body).catch(err => err);
+  console.log(req.body)
   if (req.body.role === 'author') {
     req.body.user = userResult._id;
     console.log(req.body)
