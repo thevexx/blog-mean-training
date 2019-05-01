@@ -170,6 +170,8 @@
                 <div class="col-md-6">
                   <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
                     <img src="http://{{info.Image}}" alt="Image placeholder">
+                    <h4>Written by:  {{info.author.user.name}}    {{info.author.user.lastname}}</h4>
+
                     <div class="blog-content-body">
                       <div class="post-meta">
                         <span class="mr-2">{{info.date | date:'dd/LLL/yyyy'}} </span>
@@ -177,6 +179,7 @@
                       </div>
                       <h2>{{info.title}}</h2>
                       <h6>{{info.topic}}</h6>
+                      
                     </div>
                   </a>
                 </div>
