@@ -8,6 +8,7 @@ const author = new mongoose.Schema({
   country: String,
   postalCode: String,
   about: String,
+  profileImg: String,
   articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'article' }]
 })
 
