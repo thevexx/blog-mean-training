@@ -7,10 +7,17 @@ import * as jwt_decode from "jwt-decode";
 })
 export class ArticleApiService {
 
-  userId;
-  authorId;
 
-   constructor(private http: HttpClient){}
+  userId;
+  articleId;
+  commentId;
+  authorId ;
+  constructor(private http: HttpClient) { }
+
+
+  getArticles() {
+    return this.http.get('http://localhost:3000/article/articles');
+  }
 
    decodeToken() {
     if (localStorage.getItem('token')) {
@@ -37,6 +44,8 @@ export class ArticleApiService {
   addComment( articleId, comment){
     return this.http.post('http://localhost:3000/article/addComment/' + articleId + '/' + this.userId , comment);
   }
+
+
 
 
 

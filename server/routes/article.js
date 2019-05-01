@@ -3,8 +3,13 @@ const article = require('../models/article');
 const author = require('../models/author');
 const comment = require('../models/comment');
 
+<<<<<<< HEAD
 router.post('/updateArticle/:idArticle', async (req, res) => {
   const articleResult = await article.update({ "_id": req.params.idArticle }, { $set: req.body }).exec();
+=======
+router.post('/articleUpdate/:idArticle/', async (req, res) => {
+  const articleResult = await article.update({ "_id": req.params.idArticle }, { $set: { articles: req.body } }).exec();
+>>>>>>> 2be02e136c6bb42e86e23f7520fe922861262d0e
   res.send({ data: articleResult })
 })
 
@@ -16,6 +21,11 @@ router.get('/byAuthor/:id', async (req, res) => {
 router.get('/byId/:id', async (req, res) => {
   const articleResult = await article.findOne({ "_id": req.params.id }).populate({path: 'comments', populate:{path:'user'}}).populate({ path: 'author', populate: { path: 'user' } }).exec();
   res.send({ data: articleResult })
+})
+
+router.get('/articles', async (req, res) => {
+  const result = await article.find().populate({ path: 'author', populate: { path: 'user' } }).exec();
+  res.send({ data: result })
 })
 
 router.post('/addArticle/:idAuthor', async (req, res) => {
@@ -32,4 +42,18 @@ router.post('/addComment/:idArticle/:userId', async (req, res) => {
   res.send({ data: articleResult2 })
 })
 
+<<<<<<< HEAD
+=======
+router.post('/commentUpdate/:idComment/', async (req, res) => {
+  const articleResult = await comment.updateOne({ "_id": req.params.idComment }, { $set:  req.body  }).exec();
+  res.send({ data: articleResult })
+})
+
+router.post('/deleteComment/:idComment/', async (req, res) => {
+  const articleResult = await comment.deleteOne({ "_id": req.params.idComment }).exec();
+  res.send({ data: articleResult })
+})
+
+
+>>>>>>> 2be02e136c6bb42e86e23f7520fe922861262d0e
 module.exports = router;

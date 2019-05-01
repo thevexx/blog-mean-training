@@ -1,0 +1,19 @@
+@import "https://fonts.googleapis.com/css?family=Josefin+Sans:300,%20400,700|Inconsolata:400,700";
+@import "https://colorlib.com/preview/theme/wordify/css/bootstrap.css";
+@import "https://colorlib.com/preview/theme/wordify/css/bootstrap.css";
+@import "https://colorlib.com/preview/theme/wordify/css/animate.css";
+@import "https://colorlib.com/preview/theme/wordify/css/owl.carousel.min.css";
+@import "https://colorlib.com/preview/theme/wordify/fonts/ionicons/css/ionicons.min.css";
+
+@import "https://colorlib.com/preview/theme/wordify/fonts/fontawesome/css/font-awesome.min.css";
+@import "https://colorlib.com/preview/theme/wordify/fonts/fontawesome/css/font-awesome.min.css";
+@import "https://colorlib.com/preview/theme/wordify/css/style.css";
+
+h1
+{
+  color:white;
+}
+h1::first-letter{
+  font-size:50px;
+};
+

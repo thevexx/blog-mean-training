@@ -29,7 +29,8 @@ export class ArticleComponent implements OnInit {
     })
   }
 
-  updateArt(titl, topi, conten) {
+  updateArt(titl, topi, conten){
+    //const i=0;
     const article = {
       title: titl,
       topic: topi,
@@ -38,7 +39,7 @@ export class ArticleComponent implements OnInit {
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
 
-    this.apiService.updateArticle(id, article).subscribe((res: any) => {
+    this.apiService.updateArticle(this.id, article).subscribe((res: any) => {
       console.log(res);
       this.ngOnInit();
     })
