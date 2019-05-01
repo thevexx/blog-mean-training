@@ -28,7 +28,7 @@ export class ArticleComponent implements OnInit {
       topic : topi,
       content : conten
     }
-    this.apiService.updateArticle(this.apiService.ArticleId,article).subscribe((res: any) => {
+    this.apiService.updateArticle(this.apiService.articleId,article).subscribe((res: any) => {
       console.log(res);
       this.ngOnInit();
     })
