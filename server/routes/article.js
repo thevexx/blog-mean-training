@@ -4,7 +4,7 @@ const author = require('../models/author');
 const comment = require('../models/comment');
 
 router.post('/articleUpdate/:idArticle/', async (req, res) => {
-  const articleResult = await article.update({ "_id": req.params.id }, { $set: { articles: req.body } }).exec();
+  const articleResult = await article.update({ "_id": req.params.idArticle }, { $set: { articles: req.body } }).exec();
   res.send({ data: articleResult })
 })
 
