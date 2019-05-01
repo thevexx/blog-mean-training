@@ -10,6 +10,6 @@ export class UserApiService {
   constructor(private http: HttpClient) { }
 
   getUser(userId, articleId) {
-    return this.http.get('http://localhost:3000/byAuthor/' + authorId + '/' + articleId);
+    return this.http.get('http://localhost:3000/byAuthor/' + userId + '/' + articleId);
   }
 }
