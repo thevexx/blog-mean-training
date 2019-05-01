@@ -17,10 +17,7 @@ import { AccountComponent } from './account/account.component';
     LoginComponent,
     RegisterComponent,
     ArticleComponent,
-<<<<<<< HEAD
-=======
     HomeComponent,
->>>>>>> 99d6482bef8a3c630e6270442d0b2e4c4460405d
     AccountComponent
   ],
   imports: [
