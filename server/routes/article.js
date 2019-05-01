@@ -26,6 +26,15 @@ router.post('/addComment/:idArticle', async (req, res) => {
   res.send({ data: articleResult2 })
 })
 
+router.post('/commentUpdate/:idComment/', async (req, res) => {
+  const articleResult = await comment.updateOne({ "_id": req.params.idComment }, { $set:  req.body  }).exec();
+  res.send({ data: articleResult })
+})
+
+router.post('/deleteComment/:idComment/', async (req, res) => {
+  const articleResult = await comment.deleteOne({ "_id": req.params.idComment }).exec();
+  res.send({ data: articleResult })
+})
 
 
 module.exports = router;
