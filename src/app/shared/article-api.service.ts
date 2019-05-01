@@ -8,6 +8,7 @@ export class ArticleApiService {
   articleId;
   userId;
   commentId;
+  authorId;
 
   constructor(private http: HttpClient) { }
 
@@ -15,8 +16,8 @@ export class ArticleApiService {
     return this.http.post('http://localhost:3000/article/articleUpdate/' + articleId + '/', article);
   }
 
-  getArticle(userId, articleId) {
-    return this.http.get('http://localhost:3000/id/' + userId + '/' + articleId);
+  getArticle(authorId, articleId) {
+    return this.http.get('http://localhost:3000/byAuthor/' + authorId + '/' + articleId);
   }
 
   addArticle(userId, article) {
@@ -27,12 +28,12 @@ export class ArticleApiService {
     return this.http.post('http://localhost:3000/addComment/' + userId + '/' + articleId, article);
   }
 
-  commentUpdate(userId, commentId, article){
-    return this.http.post('http://localhost:3000/commentUpdate/' + userId + '/' + commentId , article);
+  commentUpdate(userId, commentId, article) {
+    return this.http.post('http://localhost:3000/commentUpdate/' + userId + '/' + commentId, article);
   }
 
-  deleteComment(userId, commentId, article){
-    return this.http.post('http://localhost:3000/deleteComment/' + userId + '/' + commentId , article);
+  deleteComment(userId, commentId, article) {
+    return this.http.post('http://localhost:3000/deleteComment/' + userId + '/' + commentId, article);
   }
 
 
