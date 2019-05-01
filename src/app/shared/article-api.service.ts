@@ -8,7 +8,8 @@ export class ArticleApiService {
 
 
   userId;
-  articleId;
+  aticleId;
+  commentId;
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +28,16 @@ export class ArticleApiService {
   addComment(userId, articleId, article) {
     return this.http.post('http://localhost:3000/addComment/' + userId + '/' + articleId, article);
   }
+
+  commentUpdate(userId, commentId, article){
+    return this.http.post('http://localhost:3000/commentUpdate/' + userId + '/' + commentId , article);
+  }
+
+  deleteComment(userId, commentId, article){
+    return this.http.post('http://localhost:3000/deleteComment/' + userId + '/' + commentId , article);
+  }
+
+
 
 
 
