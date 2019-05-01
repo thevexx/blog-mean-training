@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 import { ArticleComponent } from './article/article.component';
 import { AccountComponent } from './account/account.component';
 
@@ -16,6 +17,7 @@ import { AccountComponent } from './account/account.component';
     LoginComponent,
     RegisterComponent,
     ArticleComponent,
+    HomeComponent,
     AccountComponent
   ],
   imports: [
