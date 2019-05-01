@@ -13,6 +13,11 @@ router.get('/byAuthor/:id', async (req, res) => {
   res.send({ data: articleResult })
 })
 
+router.get('/articles', async (req, res) => {
+  const result = await article.find().populate({ path: 'author', populate: { path: 'user' } }).exec();
+  res.send({ data: result })
+})
+
 router.post('/addArticle/:idAuthor', async (req, res) => {
   req.body.author = req.params.idAuthor;
   const articleResult = await article.create(req.body).catch(err => err);

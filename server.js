@@ -18,6 +18,8 @@ app.use('/auth', auth);
 const article = require('./server/routes/article')
 app.use('/article', article);
 
+const comment = require('./server/routes/comment')
+app.use('/comment', comment);
 
 app.listen(3000, ()=>{
   console.log('port:3000')
