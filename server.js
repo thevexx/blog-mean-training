@@ -21,6 +21,9 @@ app.use('/article', article);
 const comment = require('./server/routes/comment')
 app.use('/comment', comment);
 
+const user = require('./server/routes/user')
+app.use('/user', user);
+
 app.listen(3000, ()=>{
   console.log('port:3000')
 })
