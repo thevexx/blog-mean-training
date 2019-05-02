@@ -7,15 +7,15 @@ import { ArticleApiService } from '../shared/article-api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  articles=[];
+
+  articles = [];
   constructor(private apiService: ArticleApiService) { }
 
   ngOnInit() {
-
+    console.log('here')
     this.apiService.getArticles().subscribe((res: any) => {
       console.log(res);
-      this.articles=res.data;
+      this.articles = res.data;
 
     });
 
