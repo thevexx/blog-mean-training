@@ -11,7 +11,7 @@ export class ArticleApiService {
   userId;
   articleId;
   commentId;
-  authorId ;
+  authorId;
   constructor(private http: HttpClient) { }
 
 
@@ -19,7 +19,7 @@ export class ArticleApiService {
     return this.http.get('http://localhost:3000/article/articles');
   }
 
-   decodeToken() {
+  decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
       console.log(jwt_decode(token))
@@ -29,20 +29,20 @@ export class ArticleApiService {
     }
   }
 
-   updateArticle(articleId,article){
-   return this.http.post('http://localhost:3000/article/updateArticle/'+articleId, article);
+  updateArticle(articleId, article) {
+    return this.http.post('http://localhost:3000/article/updateArticle/' + articleId, article);
   }
 
   getArticle(articleId) {
     return this.http.get('http://localhost:3000/article/byId/' + articleId);
   }
 
-  addArticle(userId, article){
+  addArticle(userId, article) {
     return this.http.post('http://localhost:3000/article/addArticle/' + userId, article);
   }
 
-  addComment( articleId, comment){
-    return this.http.post('http://localhost:3000/article/addComment/' + articleId + '/' + this.userId , comment);
+  addComment(articleId, comment) {
+    return this.http.post('http://localhost:3000/article/addComment/' + articleId + '/' + this.userId, comment);
   }
 
 

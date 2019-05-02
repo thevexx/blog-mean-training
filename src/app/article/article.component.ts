@@ -29,7 +29,7 @@ export class ArticleComponent implements OnInit {
     })
   }
 
-  updateArt(titl, topi, conten){
+  updateArt(titl, topi, conten) {
     //const i=0;
     const article = {
       title: titl,
@@ -68,6 +68,8 @@ export class ArticleComponent implements OnInit {
   }
 
   isLikedArticle() {
-    return this.data.liked.filter(elem => elem === this.apiService.userId).length === 1;
+    if (this.data) {
+      return this.data.liked.filter(elem => elem === this.apiService.userId).length === 1;
+    }
   }
 }
